@@ -1,0 +1,39 @@
+/* Palette colors
+    --caribbean-current: #3c6e71ff;
+    --asparagus: #70ae6eff;
+    --green-yellow: #beee62ff;
+    --russian-violet: #23022eff;
+    --orange-crayola: #f4743bff;
+*/
+
+*{
+    background-color: #3c6e71ff ;
+    color: #23022eff;
+}
+
+
+                                                        /* Main */
+#mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.postContainer{
+    margin: 5%;
+    padding: 3%;
+    border: solid 5px #f4743bff;
+    border-radius: 50px;
+    background-color: #70ae6eff;
+}
+
+.postLabel{
+    color: #23022eff;
+    background-color: inherit;
+}
+
+.postData{
+    color: #23022eff;
+    background-color: inherit;
+    font-weight: bold;
+}
