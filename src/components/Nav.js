@@ -5,7 +5,8 @@ const Nav = (props) => {
     return (
         <nav>
             <p id="navTitle">Stranger's Things</p>
-            <Link to="/" id="homeBttn" >HOME</Link>
+            <Link to="/" id="homeNav" className="navButton">HOME</Link>
+            <Link to="/newpost" id="newPostNav" className="navButton">New Post</Link>
         </nav>
     )
 }

@@ -30,6 +30,7 @@ const App = () =>{
             <Routes>
                 <Route path="/" element={<Main postings={postings}/>} />
                 <Route path="/:postId" element={<DetailPost postings={postings}/>} />
+                <Route path="/newpost" element={<NewPost BASE_URL={BASE_URL} setPostings={setPostings} postings={postings}/>} />
             </Routes>
             
         </BrowserRouter>
