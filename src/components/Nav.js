@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
     return (
-        <div>
-            Nav placeholder
-        </div>
+        <nav>
+            <p id="navTitle">Stranger's Things</p>
+            <Link to="/" id="homeBttn" >HOME</Link>
+        </nav>
     )
 }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {createRoot} from "react-dom/client";
-import { Main, NewPost, Nav } from "./components";
+import { Main, NewPost, Nav, DetailPost } from "./components";
 import { BrowserRouter,Route, Routes, Link } from "react-router-dom";
 
 
@@ -29,6 +29,7 @@ const App = () =>{
         <Nav />
             <Routes>
                 <Route path="/" element={<Main postings={postings}/>} />
+                <Route path="/:postId" element={<DetailPost postings={postings}/>} />
             </Routes>
             
         </BrowserRouter>

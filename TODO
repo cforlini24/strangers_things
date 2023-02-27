@@ -3,8 +3,7 @@ create search bar
 create new post comp 
 Learn about tokens
     implement tokens
-create deatiled post route and component
-    include details
+style deatiled post component
     include delete button if author of post 
     iclude messages
 create messages route and component 
