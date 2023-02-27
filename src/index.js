@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {createRoot} from "react-dom/client";
-import { Main } from "./components";
+import { Main, NewPost, Nav } from "./components";
+import { BrowserRouter,Route, Routes, Link } from "react-router-dom";
 
 
 const App = () =>{
@@ -24,7 +25,13 @@ const App = () =>{
     } ,[])
 
     return (
-        <Main postings={postings}/>
+        <BrowserRouter>
+        <Nav />
+            <Routes>
+                <Route path="/" element={<Main postings={postings}/>} />
+            </Routes>
+            
+        </BrowserRouter>
     )
 }
 

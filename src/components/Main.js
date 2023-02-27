@@ -11,7 +11,7 @@ const Main = (props) => {
                 !postings.length ? "No results found" : postings.map((post) => {
                     return (
                         <div  key={post._id}className="postContainer">
-                            <p className="postTitle postLabel">Title: <span className="postData">{post.title}</span></p>
+                            <p className="postTitle postLabel"><span className="postData">{post.title}</span></p>
                             <p className="postAuthor postLabel">Author: <span className="postData">{post.author.username}</span></p>
                             <p className="postLocation postLabel">Location: <span className="postData">{post.location}</span></p>
                             <p className="postPrice postLabel">Price: <span className="postData">{post.price == "free" ? "Free" : post.price}</span></p>
