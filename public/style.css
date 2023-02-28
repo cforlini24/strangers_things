@@ -8,7 +8,7 @@
 
 *{
     background-color: #dad7cd ;
-    color: black;
+    color: #dad7cd;
     text-decoration: none;
 }
 
@@ -23,7 +23,14 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 8%;
+}
+
+#searchBar{
+    align-self: flex-start;
+    margin-left: 9%;
+    width: 20%;
+    padding: 1%;
 }
 
 .postContainer{
@@ -35,13 +42,36 @@ body{
     border-style:outset ;
 }
 
+.textContainer{
+    display: flex;
+    justify-content: space-between;
+    background-color: inherit;
+    margin: 1%;
+}
+
+.postLeft{
+    
+    font-size: larger;
+    background-color: inherit;
+}
+
+.postRight{
+    margin-right: 5%;
+    background-color: inherit;
+}
+
+.postTitle{
+    font-size: x-large;
+    padding-bottom: 8%;
+}
+
 .postLabel{
-    color: black;
+    color: #dad7cd;
     background-color: inherit;
 }
 
 .postData{
-    color: black;
+    color: #dad7cd;
     background-color: inherit;
     font-weight: bold;
 }
