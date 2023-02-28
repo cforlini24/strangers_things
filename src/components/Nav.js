@@ -5,8 +5,10 @@ const Nav = (props) => {
     return (
         <nav>
             <p id="navTitle">Stranger's Things</p>
-            <Link to="/" id="homeNav" className="navButton">HOME</Link>
-            <Link to="/newpost" id="newPostNav" className="navButton">New Post</Link>
+            <div id="buttonContainer">
+                <Link to="/" id="homeNav" className="navButton">HOME</Link>
+                <Link to="/newpost" id="newPostNav" className="navButton">New Post</Link>
+            </div>
         </nav>
     )
 }

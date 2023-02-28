@@ -55,50 +55,52 @@ const NewPost = (props) => {
         
     }
 
+    function postButtonReset (event) {
+        setTimeout(()=>{
+            event.target.classList.remove("errorMessage");
+            event.target.value = "Add Post";
+        }, 500)
+    }
+
     return (
-        <form >
-            <input type="text" placeholder="Post Title" onChange={(event) => setNewTitle(event.target.value)} value={newTitle}></input>
-            <textarea type="text" placeholder="Post Description" col="3" onChange={(event) => setNewDescription(event.target.value)} value={newDescription}></textarea> 
-            <input type="text" placeholder="Price" onChange={(event) => setNewPrice(event.target.value)} value={newPrice}></input>
-            <input type="text" placeholder="Location" onChange={(event) => setNewLocation(event.target.value)} value={newLocation}></input>
-            Delivery Available? <input type="checkbox" onChange={() => {
-                setNewDeliveryAvail(!newDeliveryAvail)
-                }}></input>
-            <input type="submit" value="Add Post" onClick={(event) =>{
-                event.preventDefault();
-                if(!newTitle.length){
-                    event.target.classList.add("errorMessage");
-                    event.target.value = "Enter a title";
-                    setTimeout(()=>{
-                        event.target.classList.remove("errorMessage");
-                        event.target.value = "Add post";
-                    }, 500)
-                } else if(!newDescription.length){
-                    event.target.classList.add("errorMessage");
-                    event.target.value = "Enter a description";
-                    setTimeout(()=>{
-                        event.target.classList.remove("errorMessage");
-                        event.target.value = "Add post";
-                    }, 500)
-                } else if(!newPrice.length){
-                    event.target.classList.add("errorMessage");
-                    event.target.value = "Enter a price";
-                    setTimeout(()=>{
-                        event.target.classList.remove("errorMessage");
-                        event.target.value = "Add post";
-                    }, 500)
-                } else if(!newLocation.length){
-                    event.target.classList.add("errorMessage");
-                    event.target.value = "Enter a location";
-                    setTimeout(()=>{
-                        event.target.classList.remove("errorMessage");
-                        event.target.value = "Add post";
-                    }, 500)
-                } else {
-                    putNewPost();
-                }
-            }}></input> 
-        </form>
+        <div id="newPostContainer">
+            <h3>New Post</h3>
+            <div id="inputContainer">
+            <form >
+                <input type="text" placeholder="Post Title" onChange={(event) => setNewTitle(event.target.value)} value={newTitle} className="newPostInput"></input>
+                <textarea type="text" placeholder="Post Description" col="3" onChange={(event) => setNewDescription(event.target.value)} value={newDescription}className="newPostInput"></textarea> 
+                <input type="text" placeholder="Price" onChange={(event) => setNewPrice(event.target.value)} value={newPrice}className="newPostInput"></input>
+                <input type="text" placeholder="Location" onChange={(event) => setNewLocation(event.target.value)} value={newLocation}className="newPostInput"></input>
+                <div className="newPostInput">
+                    Delivery Available? <input type="checkbox" onChange={() => {
+                    setNewDeliveryAvail(!newDeliveryAvail)
+                    }}></input>
+                </div>
+                <input id="newPostBttn" type="submit" value="Add Post" onClick={(event) =>{
+                    event.preventDefault();
+                    if(!newTitle.length){
+                        event.target.classList.add("errorMessage");
+                        event.target.value = "Enter a title";
+                        postButtonReset(event);
+                    } else if(!newDescription.length){
+                        event.target.classList.add("errorMessage");
+                        event.target.value = "Enter a description";
+                        postButtonReset(event);
+                    } else if(!newPrice.length){
+                        event.target.classList.add("errorMessage");
+                        event.target.value = "Enter a price";
+                        postButtonReset(event);
+                    } else if(!newLocation.length){
+                        event.target.classList.add("errorMessage");
+                        event.target.value = "Enter a location";
+                        postButtonReset(event);
+                    } else {
+                        putNewPost();
+                    }
+                }}></input> 
+            </form>
+            </div>
+        </div>
     )
 }
 
