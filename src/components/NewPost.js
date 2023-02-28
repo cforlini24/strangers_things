@@ -8,50 +8,75 @@ const NewPost = (props) => {
     const [newLocation, setNewLocation ] = useState("");
     const [newDeliveryAvail, setNewDeliveryAvail] = useState(false);
 
-    let newPost = {
-        location: newLocation,
-        willDeliver: newDeliveryAvail,
-        description: newDescription,
-        title: newTitle,
-        price: newPrice,
-        author: {
-            username: "tester",
-            id: 0
-        },
-        _id : 0
-    }
+    // let newPost = {
+    //     location: newLocation,
+    //     willDeliver: newDeliveryAvail,
+    //     description: newDescription,
+    //     title: newTitle,
+    //     price: newPrice,
+    //     author: {
+    //         username: "tester",
+    //         id: 0
+    //     },
+    //     _id : 0
+    // }
 
-    let TOKEN_STRING_HERE = 0;
+    let localToken = localStorage.getItem("token")
 
     let navigate = useNavigate();
 
     const {BASE_URL, setPostings, postings} = props;
 
     async function putNewPost () {
-        try {
+        if(newLocation.length){try {
             const respose = await fetch(`${BASE_URL}/posts`,{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+                    'Authorization': `Bearer ${localToken}`
                 },
                 body: JSON.stringify({
                     post: {
                         title: newTitle,
                         description: newDescription,
                         price: newPrice,
-                        willDeliver: newDeliveryAvail
+                        willDeliver: newDeliveryAvail,
+                        location: newLocation
                     }
                 })
             })
-            const data = respose.json();
-            console.log(data);
+            const data = await respose.json();
+            console.log(data.data.post)
+            setPostings([...postings, data.data.post])
         } catch (error) {
             console.log(error)
         }
-        
-        setPostings([...postings, newPost])
         navigate("/")
+    }else {
+        try {
+        const respose = await fetch(`${BASE_URL}/posts`,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localToken}`
+            },
+            body: JSON.stringify({
+                post: {
+                    title: newTitle,
+                    description: newDescription,
+                    price: newPrice,
+                    willDeliver: newDeliveryAvail
+                }
+            })
+        })
+        const data = await respose.json();
+        console.log(data.data.post)
+        setPostings([...postings, data.data.post])
+    } catch (error) {
+        console.log(error)
+    }
+    navigate("/")}
+        
         
     }
 
@@ -65,12 +90,12 @@ const NewPost = (props) => {
     return (
         <div id="newPostContainer">
             <h3>New Post</h3>
-            <div id="inputContainer">
+            <div className="inputContainer">
             <form >
                 <input type="text" placeholder="Post Title" onChange={(event) => setNewTitle(event.target.value)} value={newTitle} className="newPostInput"></input>
                 <textarea type="text" placeholder="Post Description" col="3" onChange={(event) => setNewDescription(event.target.value)} value={newDescription}className="newPostInput"></textarea> 
                 <input type="text" placeholder="Price" onChange={(event) => setNewPrice(event.target.value)} value={newPrice}className="newPostInput"></input>
-                <input type="text" placeholder="Location" onChange={(event) => setNewLocation(event.target.value)} value={newLocation}className="newPostInput"></input>
+                <input type="text" placeholder="Location (Optional)" onChange={(event) => setNewLocation(event.target.value)} value={newLocation}className="newPostInput"></input>
                 <div className="newPostInput">
                     Delivery Available? <input type="checkbox" onChange={() => {
                     setNewDeliveryAvail(!newDeliveryAvail)

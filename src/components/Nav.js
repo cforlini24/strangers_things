@@ -8,6 +8,7 @@ const Nav = (props) => {
             <div id="buttonContainer">
                 <Link to="/" id="homeNav" className="navButton">HOME</Link>
                 <Link to="/newpost" id="newPostNav" className="navButton">New Post</Link>
+                <Link to="/newuser" className="navButton">Register</Link>
             </div>
         </nav>
     )

@@ -6,3 +6,5 @@ style deatiled post component
     iclude messages
 create messages route and component 
     display all message for user 
+create login page
+create register page
