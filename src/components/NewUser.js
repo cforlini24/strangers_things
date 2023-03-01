@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NewUser = (props) => {
-    const {BASE_URL} = props;
+    const {BASE_URL, setLoggedIn, setCurrentUser} = props;
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -27,9 +27,26 @@ const NewUser = (props) => {
             const promise = await respone.json();
 
             if(!promise.success){
-                alert("Creation failed")
+                alert(promise.error.message)
             } else{
                 localStorage.setItem("token", promise.data.token)
+                let token = localStorage.getItem("token");
+                async function getCurrentUser() {
+                    try {
+                      const response = await fetch(`${BASE_URL}/users/me`,{
+                        headers: {
+                          "Content-Type": "application/json",
+                          "Authorization": `Bearer ${token}`
+                        }                      
+                      })
+                      const promise = await response.json();
+                      setCurrentUser(promise.data);
+                    } catch (error) {
+                      console.log(error)
+                    }
+                  }
+                getCurrentUser();
+                setLoggedIn(true);
                 navigate("/")
             }
 

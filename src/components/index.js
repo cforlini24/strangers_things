@@ -5,3 +5,4 @@ export {default as DetailPost} from "./DetailPost";
 export {default as SearchBar} from "./SearchBar";
 export {default as NewUser} from "./NewUser";
 export {default as Login} from "./Login";
+export {default as Profile} from "./Profile";

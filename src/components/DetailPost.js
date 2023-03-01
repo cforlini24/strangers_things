@@ -2,7 +2,7 @@ import react, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const DetailPost = (props) => {
-    let {postings, BASE_URL, setPostings, getPostingsData} = props;
+    let {postings, BASE_URL, setPostings, getPostingsData, currentUser} = props;
 
     let {postId} = useParams();
     let detailPost = {};
@@ -80,7 +80,7 @@ const DetailPost = (props) => {
                         }
                     })
                 });
-                const promise = await respone.json();
+                promise = await respone.json();
                 console.log(promise)
                 getPostingsData();
             } catch (error) {
@@ -98,7 +98,6 @@ const DetailPost = (props) => {
         setEditPrice(price)
         setEditShown(!editShown)
     }
-    
 
     return (
         <div className="detailContainer">
@@ -109,8 +108,15 @@ const DetailPost = (props) => {
                 <p className="detailLabel detailPrice"><span className="detailData">{editPrice == "free" ? "Free" : editPrice}</span></p>
                 <p className="detailLabel detailLocation">Location: <span className="detailData">{editLocation}</span></p>
                 <p className="detailLabel detailDelivery">Delivery offered: <span className="detailData">{editDelivery ? "True" : "False"}</span></p>
-                <button value="Delete post" onClick={deleteCurrentPost}>Delete post</button>
-                <button onClick={()=>editClicked()}>Edit post</button>
+                
+                {
+                    currentUser._id == userId ? 
+                    <div>
+                        <button onClick={()=>editClicked()}>Edit post</button>
+                        <button value="Delete post" onClick={deleteCurrentPost}>Delete post</button> 
+                    </div> : ""
+                }
+                
             </div>
             <div className={editShown ? "editDivShown" : "editDivHidden"}>
                 <form className="editForm">

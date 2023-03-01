@@ -1,9 +1,7 @@
-Add edit button and functionality
-Learn about tokens
-    implement tokens
 style deatiled post component
-    include delete button if author of post 
     iclude messages
-create messages route and component 
-    display all message for user 
-create login page
+style login page
+style register page
+build out profile page
+
+
