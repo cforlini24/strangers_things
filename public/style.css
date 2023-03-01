@@ -165,7 +165,50 @@ nav{
 
                                                                                     /* Detail post */
 
+.detailContainer{
+    margin-top: 8%;
+}
+.detailLabel{
+    background-color: #588157;
+}
 
+.detailData{
+    background-color: inherit;
+}
+.editForm input{
+    background-color: #344e41;
+}
+.editForm div {
+    background-color: #344e41;
+}
+
+.detailDivShown{
+    width: 80%;
+    padding: 1%;
+    margin: 1%;
+    border: solid 5px #a3b18a;
+    background-color: #588157;
+    border-style:outset ;
+}
+.detailDivHidden{
+    display: none;
+}
+
+.detailDivShown button{
+    background-color: #344e41;
+}
+
+.editDivShown{
+    width: 80%;
+    padding: 1%;
+    margin: 1%;
+    border: solid 5px #a3b18a;
+    background-color: #588157;
+    border-style:outset ;
+}
+.editDivHidden{
+    display: none;
+}
 
                                                                                     /* New User */
 #newUserFormContainer{

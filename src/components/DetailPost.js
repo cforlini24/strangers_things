@@ -1,8 +1,8 @@
-import react from "react";
+import react, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const DetailPost = (props) => {
-    let {postings, BASE_URL, setPostings} = props;
+    let {postings, BASE_URL, setPostings, getPostingsData} = props;
 
     let {postId} = useParams();
     let detailPost = {};
@@ -20,6 +20,18 @@ const DetailPost = (props) => {
     let localToken = localStorage.getItem("token")
     let navigate = useNavigate();
 
+    let [editTitle, setEditTitle] = useState(title)
+    let [editDescription, setEditDescription] = useState(description)
+    let [editPrice, setEditPrice] = useState(price)
+    let [editLocation, setEditLocation] = useState(location)
+    let [editDelivery, setEditDelivery] = useState(willDeliver)
+
+    let [editShown, setEditShown] = useState(false)
+    function editClicked () {
+        //TODO add if else statment to check if current user is the poster
+        setEditShown(!editShown)
+        console.log(editShown)
+    }
 
     async function deleteCurrentPost() {
         let promise = {};
@@ -47,16 +59,76 @@ const DetailPost = (props) => {
         }
         navigate("/")
     }
+    
+    async function putEdit(){ 
+        setEditShown(!editShown)
+        let promise = {}
+            try {
+                const respone = await fetch(`${BASE_URL}/posts/${_id}`,{
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localToken}`
+                    },
+                    body : JSON.stringify({
+                        post: {
+                            title: editTitle,
+                            description: editDescription,
+                            price: editPrice,
+                            location: editLocation,
+                            willDeliver: editDelivery
+                        }
+                    })
+                });
+                const promise = await respone.json();
+                console.log(promise)
+                getPostingsData();
+            } catch (error) {
+                console.log(error)
+            }
+
+
+    }
+
+    function cancelEdit() {
+        setEditTitle(title);
+        setEditDescription(description);
+        setEditDelivery(willDeliver);
+        setEditLocation(location);
+        setEditPrice(price)
+        setEditShown(!editShown)
+    }
+    
 
     return (
         <div className="detailContainer">
-                <p className="detailTitle"><span className="detailData"> {title}</span></p>
-                <p className="detailAuthor">Author: <span className="detailData">{username}</span></p>
-                <p className="detailDescription"><span className="detailData">{description}</span> </p>
-                <p className="detailPrice"><span className="detailData">{price == "free" ? "Free" : price}</span></p>
-                <p className="detailLocation">Location: <span className="detailData">{location}</span></p>
-                <p className="detailDelivery">Delivery offered: <span className="detailData">{willDeliver ? "True" : "False"}</span></p>
+            <div className={!editShown ? "detailDivShown" : "detailDivHidden"}>
+                <p className="detailLabel detailTitle"><span className="detailData"> {editTitle}</span></p>
+                <p className="detailLabel detailAuthor">Author: <span className="detailData">{username}</span></p>
+                <p className="detailLabel detailDescription"><span className="detailData">{editDescription}</span> </p>
+                <p className="detailLabel detailPrice"><span className="detailData">{editPrice == "free" ? "Free" : editPrice}</span></p>
+                <p className="detailLabel detailLocation">Location: <span className="detailData">{editLocation}</span></p>
+                <p className="detailLabel detailDelivery">Delivery offered: <span className="detailData">{editDelivery ? "True" : "False"}</span></p>
                 <button value="Delete post" onClick={deleteCurrentPost}>Delete post</button>
+                <button onClick={()=>editClicked()}>Edit post</button>
+            </div>
+            <div className={editShown ? "editDivShown" : "editDivHidden"}>
+                <form className="editForm">
+                    <input type="text" value={editTitle} onChange={(event) =>setEditTitle(event.target.value)}></input>
+                    <input type="text" value={editDescription} onChange={(event) => setEditDescription(event.target.value)}></input>
+                    <input type="text" value={editPrice} onChange={(event) => setEditPrice(event.target.value)}></input>
+                    <input type="text" value={editLocation} onChange={(event) => setEditLocation(event.target.value)}></input>
+                    <div>Delivery Available?<input type="checkbox" checked={editDelivery} onChange={() => setEditDelivery(!editDelivery)}></input></div>
+                    <input type="submit" value="Save Edit" onClick={(event) => {
+                        event.preventDefault();
+                        putEdit();
+                    }}></input>
+                    <input type="submit" value="Canel Edit" onClick={(event) => {
+                        event.preventDefault();
+                        cancelEdit();
+                    }}></input>
+                </form>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {createRoot} from "react-dom/client";
-import { Main, NewPost, Nav, DetailPost, SearchBar, NewUser } from "./components";
+import { Main, NewPost, Nav, DetailPost, SearchBar, NewUser, Login } from "./components";
 import { BrowserRouter,Route, Routes, Link } from "react-router-dom";
 
 
@@ -31,8 +31,9 @@ const App = () =>{
             <Routes>
                 <Route path="/newuser" element={<NewUser BASE_URL={BASE_URL}/>} />
                 <Route path="/" element={<Main postings={postings} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>} />
-                <Route path="/:postId" element={<DetailPost postings={postings} setPostings={setPostings} BASE_URL={BASE_URL}/>} />
+                <Route path="/:postId" element={<DetailPost postings={postings} setPostings={setPostings} BASE_URL={BASE_URL} getPostingsData={getPostingsData}/>} />
                 <Route path="/newpost" element={<NewPost BASE_URL={BASE_URL} setPostings={setPostings} postings={postings}/>} />
+                <Route path="/login" element={<Login BASE_URL={BASE_URL} />} />
             </Routes>
             
         </BrowserRouter>

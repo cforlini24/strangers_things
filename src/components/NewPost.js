@@ -52,32 +52,31 @@ const NewPost = (props) => {
             console.log(error)
         }
         navigate("/")
-    }else {
-        try {
-        const respose = await fetch(`${BASE_URL}/posts`,{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localToken}`
-            },
-            body: JSON.stringify({
-                post: {
-                    title: newTitle,
-                    description: newDescription,
-                    price: newPrice,
-                    willDeliver: newDeliveryAvail
-                }
-            })
-        })
-        const data = await respose.json();
-        console.log(data.data.post)
-        setPostings([...postings, data.data.post])
-    } catch (error) {
-        console.log(error)
-    }
-    navigate("/")}
-        
-        
+        }else {
+            try {
+                const respose = await fetch(`${BASE_URL}/posts`,{
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localToken}`
+                    },
+                    body: JSON.stringify({
+                        post: {
+                            title: newTitle,
+                            description: newDescription,
+                            price: newPrice,
+                            willDeliver: newDeliveryAvail
+                        }
+                    })
+                })
+                const data = await respose.json();
+                console.log(data.data.post)
+                setPostings([...postings, data.data.post])
+            } catch (error) {
+                console.log(error)
+            }
+        navigate("/")
+        }
     }
 
     function postButtonReset (event) {
