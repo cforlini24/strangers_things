@@ -8,12 +8,16 @@
 
 *{
     background-color: #dad7cd ;
-    color: #dad7cd;
+    /* color: #dad7cd; */
+    color: black;
     text-decoration: none;
 }
 
 body{
     margin: 0;
+}
+h3{
+    color: black;
 }
 
 

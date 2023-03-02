@@ -1,5 +1,6 @@
 import react, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import MessageSender from "./MessageSender";
 
 const DetailPost = (props) => {
     let {postings, BASE_URL, setPostings, getPostingsData, currentUser} = props;
@@ -114,7 +115,7 @@ const DetailPost = (props) => {
                     <div>
                         <button onClick={()=>editClicked()}>Edit post</button>
                         <button value="Delete post" onClick={deleteCurrentPost}>Delete post</button> 
-                    </div> : ""
+                    </div> : <MessageSender currentUser={currentUser} postId={_id} BASE_URL={BASE_URL}/>
                 }
                 
             </div>

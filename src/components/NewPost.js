@@ -114,10 +114,6 @@ const NewPost = (props) => {
                         event.target.classList.add("errorMessage");
                         event.target.value = "Enter a price";
                         postButtonReset(event);
-                    } else if(!newLocation.length){
-                        event.target.classList.add("errorMessage");
-                        event.target.value = "Enter a location";
-                        postButtonReset(event);
                     } else {
                         putNewPost();
                     }
