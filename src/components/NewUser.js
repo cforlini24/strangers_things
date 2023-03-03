@@ -56,9 +56,9 @@ const NewUser = (props) => {
     }
 
     return(
-        <div id="newUserContainer">
-            <div className="inputContainer" id="newUserFormContainer"> 
-                <form id="newUserForm">
+        <div className="loginContainer">
+            <h3>Sign Up</h3>
+                <form id="newUserForm" className="loginForm">
                     <input type="text" placeholder="Username" value={username} onChange={(event) => {
                         setUsername(event.target.value);
                     }}></input>
@@ -71,7 +71,6 @@ const NewUser = (props) => {
                         putNewUser()
                     }}></input>
                 </form>
-            </div>
         </div>
     )
 }

@@ -54,15 +54,16 @@ const Login = (props) => {
 
     const navigate = useNavigate();
     return(
-        <div className="inputContainer">
-            <form >
+        <div className="loginContainer">
+          <h3>Login</h3>
+            <form className="loginForm">
             <input type="text" placeholder="Username" value={username} onChange={(event) => {
                         setUsername(event.target.value);
                     }}></input>
                     <input type="text" placeholder="Password" value={password} onChange={(event) => {
                         setPassword(event.target.value);
                     }}></input>
-                    <input type="submit" value="Create Account" id="createAccountButton"
+                    <input type="submit" value="Login" id="loginButton"
                     onClick={(event) => {
                         event.preventDefault();
                         postUserLogin()

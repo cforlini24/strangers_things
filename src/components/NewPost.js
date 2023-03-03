@@ -8,19 +8,6 @@ const NewPost = (props) => {
     const [newLocation, setNewLocation ] = useState("");
     const [newDeliveryAvail, setNewDeliveryAvail] = useState(false);
 
-    // let newPost = {
-    //     location: newLocation,
-    //     willDeliver: newDeliveryAvail,
-    //     description: newDescription,
-    //     title: newTitle,
-    //     price: newPrice,
-    //     author: {
-    //         username: "tester",
-    //         id: 0
-    //     },
-    //     _id : 0
-    // }
-
     let localToken = localStorage.getItem("token")
 
     let navigate = useNavigate();
@@ -100,7 +87,7 @@ const NewPost = (props) => {
                     setNewDeliveryAvail(!newDeliveryAvail)
                     }}></input>
                 </div>
-                <input id="newPostBttn" type="submit" value="Add Post" onClick={(event) =>{
+                <input className="newPostBttn" type="submit" value="Add Post" onClick={(event) =>{
                     event.preventDefault();
                     if(!newTitle.length){
                         event.target.classList.add("errorMessage");

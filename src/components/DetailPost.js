@@ -34,6 +34,8 @@ const DetailPost = (props) => {
         console.log(editShown)
     }
 
+    let [comfirmShown, setConfirmShown] = useState(false);
+
     async function deleteCurrentPost() {
         let promise = {};
         try {
@@ -58,6 +60,7 @@ const DetailPost = (props) => {
         }else{
             alert("You are not allowed to delete this post")
         }
+        setConfirmShown(false)
         navigate("/")
     }
     
@@ -114,23 +117,24 @@ const DetailPost = (props) => {
                     currentUser._id == userId ? 
                     <div className="detailButtonContainer">
                         <button onClick={()=>editClicked()}>Edit post</button>
-                        <button value="Delete post" onClick={deleteCurrentPost}>Delete post</button> 
+                        <button value="Delete post" onClick={()=>setConfirmShown(true)} className={comfirmShown ? "deleteHidden": ""}>Delete post</button> 
+                        <button onClick={deleteCurrentPost} className={comfirmShown ? "confirmShown": "confirmHidden"}>Confirm Delete</button>
                     </div> : ""
                 }
                 
             </div>
             <div className={editShown ? "editDivShown" : "editDivHidden"}>
                 <form className="editForm">
-                    <input type="text" value={editTitle} onChange={(event) =>setEditTitle(event.target.value)}></input>
-                    <input type="text" value={editDescription} onChange={(event) => setEditDescription(event.target.value)}></input>
-                    <input type="text" value={editPrice} onChange={(event) => setEditPrice(event.target.value)}></input>
-                    <input type="text" value={editLocation} onChange={(event) => setEditLocation(event.target.value)}></input>
-                    <div>Delivery Available?<input type="checkbox" checked={editDelivery} onChange={() => setEditDelivery(!editDelivery)}></input></div>
-                    <input type="submit" value="Save Edit" onClick={(event) => {
+                    <input type="text" className="editInput" value={editTitle} onChange={(event) =>setEditTitle(event.target.value)}></input>
+                    <input type="text" className="editInput" value={editDescription} onChange={(event) => setEditDescription(event.target.value)}></input>
+                    <input type="text" className="editInput" value={editPrice} onChange={(event) => setEditPrice(event.target.value)}></input>
+                    <input type="text" className="editInput" value={editLocation} onChange={(event) => setEditLocation(event.target.value)}></input>
+                    <div className="editInput">Delivery Available?<input type="checkbox" checked={editDelivery} onChange={() => setEditDelivery(!editDelivery)}></input></div>
+                    <input className="editButton" type="submit" value="Save Edit" onClick={(event) => {
                         event.preventDefault();
                         putEdit();
                     }}></input>
-                    <input type="submit" value="Canel Edit" onClick={(event) => {
+                    <input type="submit" className="editButton" value="Canel Edit" onClick={(event) => {
                         event.preventDefault();
                         cancelEdit();
                     }}></input>

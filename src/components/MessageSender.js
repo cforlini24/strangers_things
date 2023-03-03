@@ -37,9 +37,9 @@ const MessageSender = (props) => {
         <div className="detailButtonContainer"> 
         {
             !messageFormShown ? <button onClick={()=>setMessageFormShown(true)}>Message User</button>: 
-            <form>
-                <textarea type="text" col="3" onChange={(event)=> setMessageContent(event.target.value)}></textarea>
-                <input type="submit" value="Send Message"onClick={(event)=> {
+            <form className="messageForm">
+                <textarea id="messageTextArea" autoFocus type="text" col="5" rows="5" onChange={(event)=> setMessageContent(event.target.value)}></textarea>
+                <input id="messageSubmitButton" type="submit" value="Send Message"onClick={(event)=> {
                     event.preventDefault();
                     putMessage();
                     setMessageFormShown(false)

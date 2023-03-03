@@ -101,7 +101,6 @@ h3{
 }
 
 .inputContainer{
-    margin-top: 8%;
     width: 80%;
     padding: 1%;
     background-color: #588157;
@@ -123,17 +122,25 @@ form{
     padding: 2%;
     color: gray;
     background-color: #344e41;
+    border-width: 2px;
+    border-style: inset;
+    border-color:  rgb(133, 133, 133);
+    font-family: inherit;
+    font-size: large;
 }
 
-#newPostBttn{
+.newPostBttn{
     align-self: center;
     margin: 3%;
     padding: 3%;
     width: 30%;
     color: #344e41;
 }
+.newPostBttn:hover{
+    cursor:pointer ;
+}
 
-#newPostBttn .errorMessage{
+.errorMessage{
     color: red;
 }
 
@@ -164,6 +171,8 @@ nav{
 
 #navTitle{
     background-color: inherit;
+    padding-left: 1%;
+    font-size: larger;
 }
 
 #buttonContainer{
@@ -190,17 +199,35 @@ nav{
     background-color: #588157;
 }
 .detailButtonContainer{
-    background-color: inherit;
+    background-color:inherit;
+}
+.detailButtonContainer button{
+    padding: 1%;
+    margin: 1%;
+}
+
+.deleteHidden{
+    display: none;
+}
+.confirmHidden{
+    display: none;
+}
+.confirmShown{
+    color: red;
 }
 
 .detailData{
     background-color: inherit;
 }
-.editForm input{
-    background-color: #344e41;
-}
+
 .editForm div {
     background-color: #344e41;
+}
+.editButton{
+    align-self: center;
+    padding: 1%;
+    margin: 1%;
+    width: 60%;
 }
 
 .detailDivShown{
@@ -213,9 +240,6 @@ nav{
     display: none;
 }
 
-.detailDivShown button{
-    background-color: #344e41;
-}
 
 .editDivShown{
     display: flex;
@@ -225,6 +249,18 @@ nav{
     padding: 1%;
     margin: 1%;
     align-self: center;
+}
+
+.editInput {
+    margin: 2%;
+    padding: 2%;
+    color: gray;
+    background-color: #344e41;
+    border-width: 2px;
+    border-style: inset;
+    border-color:  rgb(133, 133, 133);
+    font-family: inherit;
+    font-size: large;
 }
 .editDivHidden{
     display: none;
@@ -258,30 +294,20 @@ nav{
     height: 400px;
 }
 
-                                                                                    /* New User */
-#newUserFormContainer{
-    margin: 5%;
-    padding: 5%;
+.messageForm{
+margin: 1%;
 }
 
-#newUserContainer{
-    padding: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#newUserForm input {
+#messageTextArea{
     padding: 1%;
-    margin: 3%;
-    color: #344e41
+margin: 2%
 }
-
-#createAccountButton{
-    width: 50%;
-    align-self: center;
+#messageSubmitButton{
+margin: 1%;
+padding: 1%;
+width: 60%;
+align-self: center;
 }
-
 
                                                                                 /* Profile */
 #profileMessageContainer{
@@ -329,4 +355,40 @@ nav{
     background-color: inherit;
     width: 40%;
     height: 95%;
+}
+                                                    /* Login */
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 3%;
+    background-color: #588157;
+    display: flex;
+    justify-content: center;
+    border: solid 5px #a3b18a;
+    border-style:outset ;
+    align-items: center;
+}
+.loginContainer *{
+    padding: 1%;
+    margin: 1%;
+}
+h3{
+    margin: 0;
+    background-color: inherit;
+}
+
+.loginForm input{
+    margin: 3%;
+}
+#loginButton{
+    width: 60%;
+    align-self: center;
+    padding: 2%;
+}
+
+#createAccountButton{
+    width: 60%;
+    align-self: center;
+    padding: 2%;
 }
