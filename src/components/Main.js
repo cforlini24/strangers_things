@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 const Main = (props) => {
-    const {postings, searchTerm, setSearchTerm} = props;
+    const {postings, searchTerm, setSearchTerm, getPostingsData} = props;
 
     // title, author(obj), createdAt, description, isAuthor, location, price, willDeliver, _id
 
@@ -12,6 +12,13 @@ const Main = (props) => {
 
         return lowerCase.includes(searchTerm.toLowerCase())
     })
+
+
+
+
+    useEffect(()=>{
+        getPostingsData()
+    }, [])
 
     return (
         <div id="mainContainer">

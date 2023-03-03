@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import MessageSender from "./MessageSender";
+import MessageContainer from "./MessageContainer";
 
 const DetailPost = (props) => {
     let {postings, BASE_URL, setPostings, getPostingsData, currentUser} = props;
@@ -29,7 +30,6 @@ const DetailPost = (props) => {
 
     let [editShown, setEditShown] = useState(false)
     function editClicked () {
-        //TODO add if else statment to check if current user is the poster
         setEditShown(!editShown)
         console.log(editShown)
     }
@@ -112,10 +112,10 @@ const DetailPost = (props) => {
                 
                 {
                     currentUser._id == userId ? 
-                    <div>
+                    <div className="detailButtonContainer">
                         <button onClick={()=>editClicked()}>Edit post</button>
                         <button value="Delete post" onClick={deleteCurrentPost}>Delete post</button> 
-                    </div> : <MessageSender currentUser={currentUser} postId={_id} BASE_URL={BASE_URL}/>
+                    </div> : ""
                 }
                 
             </div>
@@ -136,6 +136,9 @@ const DetailPost = (props) => {
                     }}></input>
                 </form>
             </div>
+            {
+                    currentUser._id == userId ?  <MessageContainer currentUser={currentUser} postId={_id} BASE_URL={BASE_URL}/> : <MessageSender currentUser={currentUser} postId={_id} BASE_URL={BASE_URL}/>
+            }
         </div>
     )
 }

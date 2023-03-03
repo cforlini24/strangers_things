@@ -3,6 +3,8 @@ import react from "react";
 const SearchBar = (props) => {
     const {searchTerm, setSearchTerm} = props;
 
+
+
     return(
         <input id="searchBar" 
             type="text" 
@@ -11,9 +13,7 @@ const SearchBar = (props) => {
             onChange={(event) => {
                 setSearchTerm(event.target.value);
             }}
-            >
-        
-        </input>
+            ></input>
     )
 }
 

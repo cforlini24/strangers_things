@@ -49,10 +49,10 @@ const App = () =>{
 
     return (
         <BrowserRouter>
-        <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser}/>
+        <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />
             <Routes>
                 <Route path="/newuser" element={<NewUser BASE_URL={BASE_URL} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser}/>} />
-                <Route path="/" element={<Main postings={postings} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>} />
+                <Route path="/" element={<Main postings={postings} searchTerm={searchTerm} setSearchTerm={setSearchTerm} getPostingsData={getPostingsData}/>} />
                 <Route path="/:postId" element={<DetailPost postings={postings} setPostings={setPostings} BASE_URL={BASE_URL} getPostingsData={getPostingsData} currentUser={currentUser}/>} />
                 <Route path="/profile" element={<Profile currentUser={currentUser} getCurrentUser={getCurrentUser}/>} />
                 <Route path="/newpost" element={<NewPost BASE_URL={BASE_URL} setPostings={setPostings} postings={postings}/>} />

@@ -19,15 +19,22 @@ body{
 h3{
     color: black;
 }
+#app{
+    display: flex;
+    flex-direction: column;
+    margin-top: 6%;
+    justify-content: center;
+    align-items: center;
+}
 
 
                                                         /* Main */
 #mainContainer{
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 8%;
 }
 
 #searchBar{
@@ -87,7 +94,7 @@ h3{
 
                                             /* New post */
 #newPostContainer{
-    margin-top: 5%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -170,10 +177,20 @@ nav{
                                                                                     /* Detail post */
 
 .detailContainer{
-    margin-top: 8%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 1%;
+    margin: 1%;
+    border: solid 5px #a3b18a;
+    background-color: #588157;
+    border-style:outset ;
 }
 .detailLabel{
     background-color: #588157;
+}
+.detailButtonContainer{
+    background-color: inherit;
 }
 
 .detailData{
@@ -187,13 +204,11 @@ nav{
 }
 
 .detailDivShown{
-    width: 80%;
+    background-color: inherit;
     padding: 1%;
     margin: 1%;
-    border: solid 5px #a3b18a;
-    background-color: #588157;
-    border-style:outset ;
 }
+
 .detailDivHidden{
     display: none;
 }
@@ -203,15 +218,44 @@ nav{
 }
 
 .editDivShown{
+    display: flex;
+    justify-content: center;
+    background-color: inherit;
     width: 80%;
     padding: 1%;
     margin: 1%;
-    border: solid 5px #a3b18a;
-    background-color: #588157;
-    border-style:outset ;
+    align-self: center;
 }
 .editDivHidden{
     display: none;
+}
+
+.messageContainer{
+    align-self: center;
+    width: 60%;
+    background-color: inherit;
+}
+.messageContainer * {
+    background-color: inherit;
+}
+
+.individualMessage{
+    background-color: #dad7cd;
+    padding:3%;
+    margin: 1%;
+    margin-bottom: 5%;
+    box-shadow: 5px 5px black;
+}
+.fromLabel{
+    border-bottom: solid black;
+}
+
+.detailTitle{
+    font-size: x-large;
+}
+
+.messageContainer .threadContainer{
+    height: 400px;
 }
 
                                                                                     /* New User */
@@ -236,4 +280,53 @@ nav{
 #createAccountButton{
     width: 50%;
     align-self: center;
+}
+
+
+                                                                                /* Profile */
+#profileMessageContainer{
+    display: flex;
+    padding: 1%;
+    margin: 1%;
+    width: 80%;
+    justify-content: space-evenly;
+    background-color: #588157; 
+    border: solid 5px #a3b18a;
+    border-style:outset ;
+    color:#dad7cd;
+    flex-wrap: wrap;
+    height: 600px;
+    margin-bottom: 8%;
+}
+
+.messageHeader{
+    background-color: inherit;
+    text-align: center;
+    color:#dad7cd;
+    border-bottom: solid #dad7cd;
+    width: 100%;
+}
+
+.threadContainer{
+    background-color: inherit;
+    border: #344e41;
+    color:#dad7cd;
+    overflow:scroll;
+    width: 100%;
+    overflow-x: hidden;
+    height: inherit;
+}
+
+#rightContainer{
+    background-color: inherit;
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    height: 95%;
+}
+
+#leftContainer{
+    background-color: inherit;
+    width: 40%;
+    height: 95%;
 }

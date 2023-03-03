@@ -30,11 +30,11 @@ const MessageSender = (props) => {
     }
 
     if (!currentUser.username) return(
-        <div>Login or register to message</div>
+        <div className="detailButtonContainer">Login or register to message</div>
     )
     
     return (
-        <div>
+        <div className="detailButtonContainer"> 
         {
             !messageFormShown ? <button onClick={()=>setMessageFormShown(true)}>Message User</button>: 
             <form>

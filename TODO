@@ -1,7 +1,11 @@
 style deatiled post component
-    iclude messages
+    style sendMessage component
 style login page
 style register page
-build out profile page
 create message component
+    add reply button to recieved messages 
+    add time to messages
+style edit form
+style nav bar(title)
+
 
