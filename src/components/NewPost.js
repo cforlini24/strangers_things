@@ -14,6 +14,8 @@ const NewPost = (props) => {
 
     const {BASE_URL, setPostings, postings} = props;
 
+    let newPostId = ""
+
     async function putNewPost () {
         if(newLocation.length){try {
             const respose = await fetch(`${BASE_URL}/posts`,{
@@ -33,12 +35,12 @@ const NewPost = (props) => {
                 })
             })
             const data = await respose.json();
-            console.log(data.data.post)
+            newPostId = data.data.post._id
             setPostings([...postings, data.data.post])
         } catch (error) {
             console.log(error)
         }
-        navigate("/")
+        navigate(`/${newPostId}`)
         }else {
             try {
                 const respose = await fetch(`${BASE_URL}/posts`,{
@@ -57,12 +59,12 @@ const NewPost = (props) => {
                     })
                 })
                 const data = await respose.json();
-                console.log(data.data.post)
+                newPostId = data.data.post._id
                 setPostings([...postings, data.data.post])
             } catch (error) {
                 console.log(error)
             }
-        navigate("/")
+        navigate(`/${newPostId}`)
         }
     }
 
